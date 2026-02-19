@@ -40,7 +40,12 @@ class VOCMonitor:
             SESSION_COOKIE_SAMESITE="Lax",
         )"""
 
-        self.socketio = SocketIO(self.app, async_mode="gevent", cors_allowed_origins="*", engineio_logger=False, logger=False)
+        self.socketio = SocketIO(
+            self.app, async_mode=Config.SOCKETIO_ASYNC_MODE,
+            cors_allowed_origins="*",
+            engineio_logger=False,
+            logger=False
+        )
         self.mail = Mail(self.app)
 
         self.db = DatabaseManager()
@@ -73,7 +78,10 @@ class VOCMonitor:
         """Stars the mqtt_manager in a thread and starts the production web server on port 8000."""
 
         # Start MQTT before creating Flask app
-        mqtt_thread = threading.Thread(target=self.mqtt_manager.run_mqtt, daemon=True)
+        mqtt_thread = threading.Thread(
+            target=self.mqtt_manager.run_mqtt,
+            daemon=True
+        )
         mqtt_thread.start()
 
         # Create Flask app and Socket.IO
