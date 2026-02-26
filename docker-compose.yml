@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+
+  app:
+    build: .
+    container_name: vocmonitor_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      - mosquitto
+    ports:
+      - "5000:5000"
+    networks:
+      - voc_net
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    container_name: vocmonitor_mqtt
+    restart: unless-stopped
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    ports:
+      - "1883:1883"
+    networks:
+      - voc_net
+
+networks:
+  voc_net:
+    driver: bridge
