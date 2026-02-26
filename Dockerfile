@@ -21,4 +21,4 @@ COPY . .
 ENV PYTHONBUFFERED=1
 
 # Default commands executed when container starts
-CMD ["python", "main.py"]
+CMD ["python", "-u", "main.py"]
