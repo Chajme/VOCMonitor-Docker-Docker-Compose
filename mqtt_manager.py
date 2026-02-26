@@ -92,7 +92,7 @@ class MQTTManager:
             try:
                 result = self.client.connect(self.server, self.port, 60)
             except Exception as e:
-                print(f">>> Connection failed: {e}")
+                print(f">>> MQTT connection failed: {e}")
                 print(">>> Will try reconnecting in 15 seconds...")
             time.sleep(15)
 
