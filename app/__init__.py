@@ -24,7 +24,12 @@ def create_app(db_manager):
 
     notif_manager = NotificationManager(app, socketio, mail, db_manager)
 
-    mqtt_manager = MQTTManager(db_manager, notif_manager, "192.168.0.101", 1883)
+    mqtt_manager = MQTTManager(
+        db_manager,
+        notif_manager,
+        Config.MQTT_HOST,
+        Config.MQTT_PORT
+    )
     mqtt_thread = threading.Thread(target=mqtt_manager.run_mqtt)
     mqtt_thread.daemon = True
     mqtt_thread.start()

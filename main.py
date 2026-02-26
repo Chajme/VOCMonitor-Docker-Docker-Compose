@@ -1,8 +1,11 @@
+from app import Config
 from app.voc_monitor import VOCMonitor
+from gevent import monkey
+monkey.patch_all()
 
 voc_monitor = VOCMonitor(
-    "192.168.0.101",
-    1883,
-    8000
+    Config.MQTT_HOST,
+    Config.MQTT_PORT,
+    Config.WEB_SERVER_PORT
 )
 voc_monitor.run()
