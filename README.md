@@ -7,9 +7,10 @@ Python app created in Python designed to continously take messages from MQTT and
 
 ## Requirements
 
+* python 3.13.3
 * SQLite3
-* flask
-* flask_socketio
+* flask 3.1.3
+* flask_socketio 5.6.0
 * flask_mail
 * paho.mqtt
 * gevent
