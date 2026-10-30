@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VOC Monitor (React)</title>
+
+    <!-- Shared look: fonts, icons, stylesheet, favicon and logo are the same
+         assets the Jinja pages use. Flask owns them in both dev (via the Vite
+         /static proxy) and production. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+    <link rel="preload" as="image" href="/static/images/VOCMonitorLogo.png" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,6 +1,13 @@
 """Modules stores routes used for webserver navigation and handling of requests."""
 
-from flask import Blueprint, jsonify, render_template, request
+from flask import (
+    Blueprint,
+    current_app,
+    jsonify,
+    render_template,
+    request,
+    send_from_directory,
+)
 
 
 class Routes:
@@ -33,6 +40,17 @@ class Routes:
 
     def create_routes(self):
         """Function to create all defined routes, returns the defined routes."""
+
+        def react_index():
+            """Serve the built React app (output of `npm run build`)."""
+
+            return send_from_directory(current_app.static_folder, "react/index.html")
+
+        @self.routes.route("/react-dev-check")
+        def react_dev_check():
+            """Temporary route used by Spec 0 to verify Flask serves the React build."""
+
+            return react_index()
 
         @self.routes.route("/")
         def index():
